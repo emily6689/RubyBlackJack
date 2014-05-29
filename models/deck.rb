@@ -1,6 +1,6 @@
 class Deck
   attr_reader :cards
-  SUITS  = ['♠', '♥', '♣', '♦']
+  SUITS  = ['c', 'h', 's', 'd']
   VALUES = [2,3,4,5,6,7,8,9,10, 'J', 'Q', 'K', 'A']
 
   def initialize
@@ -21,19 +21,3 @@ class Deck
     @cards.each do ||
   end
 end
-
-class Hand
-end
-
-class Game
-end
-
-class Card
-
-  def initialize(value, suit)
-    @value = value
-    @suit = suit
-  end
-
-end
-
