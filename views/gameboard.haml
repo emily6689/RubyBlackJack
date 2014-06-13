@@ -1,0 +1,9 @@
+%h1 BlackJack!!!
+.dealer_hand
+  %h2 Dealer Hand
+  - @dealer_hand.hand_cards.each do |card|
+    %img(src="/images/#{card.suit}#{card.rank}.png")
+.player_hand
+  %h2 Your Hand
+  - @player_hand.hand_cards.each do |card|
+    %img(src="/images/#{card.suit}#{card.rank}.png")
