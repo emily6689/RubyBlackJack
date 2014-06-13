@@ -1,9 +1,18 @@
 %h1 BlackJack!!!
+
 .dealer_hand
   %h2 Dealer Hand
   - @dealer_hand.hand_cards.each do |card|
     %img(src="/images/#{card.suit}#{card.rank}.png")
+  %p= "Value: #{@dealer_hand.get_value}"
+
 .player_hand
   %h2 Your Hand
   - @player_hand.hand_cards.each do |card|
     %img(src="/images/#{card.suit}#{card.rank}.png")
+  %p= "Value: #{@player_hand.get_value}"
+
+.player_form
+  %form{ :action => "/", :method => "post" }
+    %button{formmethod: "post", name: "hit", value: "hit"} Hit
+    %button{formmethod: "post", name: "stand", value: "stand"} Stand
