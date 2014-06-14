@@ -53,7 +53,7 @@ class Game
       false
     elsif dealer_hand_value < 17
       dealer_hand.deal_from game_deck
-      dealer_turn_under_21
+      dealer_turn
     else
       true
     end

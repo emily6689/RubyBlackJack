@@ -39,11 +39,10 @@ end
 
 post '/' do
   restore_game
-  while @player_value <= 21
+  if @player_value <= 21
     if params[:action] == "hit"
       @player_hand.deal_from @deck
       @player_value = @player_hand.get_value
-      binding.pry
     elsif params[:action] == "stand"
       @game.dealer_turn
     elsif params[:action] == "quit"
