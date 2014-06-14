@@ -18,18 +18,6 @@ class Game
     dealer_hand.get_value
   end
 
-  def show_stats
-    print "--- Dealer Hand: #{dealer_hand.show_hand} --- "
-    puts "#{dealer_hand_value} "
-    print "--- Your Hand: #{player_hand.show_hand} --- "
-    puts "#{player_hand_value}"
-  end
-
-  def player_prompt
-    print "Stand or hit? "
-    decision = gets.chomp
-  end
-
   def player_turn_under_21
     puts show_stats
     if player_hand_value > 21
