@@ -48,7 +48,7 @@ class Game
     end
   end
 
-  def dealer_turn_under_21
+  def dealer_turn
     if dealer_hand_value > 21
       false
     elsif dealer_hand_value < 17

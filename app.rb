@@ -18,9 +18,11 @@ helpers do
       @game = Game.new
       session[:game] = @game
     end
-      @deck = @game.game_deck
-      @dealer_hand = @game.dealer_hand
-      @player_hand = @game.player_hand
+    @deck = @game.game_deck
+    @dealer_hand  = @game.dealer_hand
+    @player_hand  = @game.player_hand
+    @dealer_value = @dealer_hand.get_value
+    @player_value = @player_hand.get_value
   end
 
   def save
@@ -28,9 +30,6 @@ helpers do
   end
 end
 
-before do
-  restore_game
-end
 
 get '/' do
   restore_game
@@ -39,8 +38,29 @@ get '/' do
 end
 
 post '/' do
-  if params[:action] == "hit"
-    @player_hand.deal_from @deck
+  restore_game
+  while @player_value <= 21
+    if params[:action] == "hit"
+      @player_hand.deal_from @deck
+      @player_value = @player_hand.get_value
+      binding.pry
+    elsif params[:action] == "stand"
+      @game.dealer_turn
+    elsif params[:action] == "quit"
+      session[:game] = nil
+    end
+  end
+  if params[:action] == "quit"
+    session[:game] = nil
   end
   redirect '/'
 end
+
+
+
+
+
+
+
+
+
